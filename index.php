@@ -3,7 +3,7 @@ include "./src/functions.php";
 
 task1(["банан","яблоко","киви"], false);
 
-echo task2('/', 1, 2, 0);
+echo task2('*', 2, 4, "bhjb");
 
 echo task3(5, 7);
 

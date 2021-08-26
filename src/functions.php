@@ -9,14 +9,12 @@
 
 function task1($arr, $flag = true)
 {
-    if (!$flag) {
+    if ($flag) {
+        return implode(" ,", $arr);
+    }    
         foreach ($arr as $key => $str) {
             echo "<p>$str</p>";
         }
-    } else {
-        $result = implode(" ,", $arr);
-        return $result;
-    }
 }
 
 /*
@@ -33,9 +31,12 @@ function task1($arr, $flag = true)
 function task2(string $action, ...$args)
 {
     foreach ($args as $n => $arg) {
-        if (!is_int($arg) && !is_float($arg)) {
-            trigger_error('argument #' . $n . ' is not integer or float');
-            return 'Ошибка: массив состоит не из чисел';
+        if (is_numeric($arg)) {  //is_numeric() проверяет, является ли переменная числом или строкой, содержащей число
+            echo var_export($arg, true) . " is numeric", '<br>';
+        } else {
+            echo var_export('argument #' . $n . ' is NOT numeric');
+            //trigger_error('argument #' . $n . ' is NOT numeric');
+            return ' Ошибка: массив состоит не из чисел';
         }
     }
     switch ($action) {
@@ -77,17 +78,8 @@ function task2(string $action, ...$args)
 3. В остальных случаях выдавать корректную ошибку.
 */
 
-function task3($a, $b)
+function task3(int $a, int $b)
 {
-    if (!is_int($a)) {
-        trigger_error('Введите целое число');
-        return false;
-    }
-    if (!is_int($b)) {
-        trigger_error('Введите целое число');
-        return false;
-    }
-
     if ($a < 0 || $b < 0) {
         trigger_error('Введите два целых числа больше нуля.');
         return false;
